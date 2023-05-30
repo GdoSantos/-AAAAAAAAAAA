@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class TelaDeLogin {
+    private List<Usuario> usuarios;
+
+    public TelaDeLogin() {
+        usuarios = new ArrayList<>();
+        // Inicialize a lista de usuários com alguns exemplos para fins de demonstração
+        usuarios.add(new Usuario("usuario1", "senha1"));
+        usuarios.add(new Usuario("usuario2", "senha2"));
+        usuarios.add(new Usuario("usuario3", "senha3"));
+    }
+
+    public void excluirUsuario(String nomeUsuario) {
+        Usuario usuarioExcluir = null;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNome().equals(nomeUsuario)) {
+                usuarioExcluir = usuario;
+                break;
+            }
+        }
+        
+        if (usuarioExcluir != null) {
+            usuarios.remove(usuarioExcluir);
+            System.out.println("Usuário removido com sucesso.");
+        } else {
+            System.out.println("Usuário não encontrado.");
+        }
+    }
+
+    public static void main(String[] args) {
+        TelaDeLogin telaDeLogin = new TelaDeLogin();
+        telaDeLogin.excluirUsuario("usuario2");
+    }
+}
+
+class Usuario {
+    private String nome;
+    private String senha;
+
+    public Usuario(String nome, String senha) {
+        this.nome = nome;
+        this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+}
